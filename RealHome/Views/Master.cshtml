@@ -1,0 +1,117 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Home Page</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Home page" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+    </script>
+    <style>
+        .counter {
+            top: 0px;
+            margin-left: 60px;
+            color: #fff;
+            font-size: 42px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: absolute;
+        }
+        .slick-next {
+            right: 50px !important;
+        }
+        .slick-prev {
+            left: 50px !important;
+        }
+            .slick-next:before, .slick-prev::after {
+                font-family: slick;
+                font-size: 40px !important;
+                line-height: 1;
+                opacity: 1 !important;
+                color: #fff;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+    </style>
+    <!-- Custom Stylesheet Link -->
+    <!-- Font awesome -->
+    <link href="~/assets/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap link -->
+@*    <link href="~/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />*@
+    <!-- gallery -->
+    <link href="~/assets/css/lsb.css" rel="stylesheet" type="text/css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Carousel link -->
+    <link href="~/assets/css/owl.carousel.css" rel="stylesheet">
+
+    <!-- banne slider -->
+    <link href="~/assets/css/JiSlider.css" rel="stylesheet">
+
+    <!-- menu slider -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style7.css" />
+
+    <!-- tabs -->
+    <link rel="stylesheet" href="~/assets/css/easy-responsive-tabs.css">
+    <!-- tabs inner slider -->
+
+@*    <link rel="stylesheet" type="text/css" href="realhome.css">*@
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom-Stylesheet-Links -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    @Html.Partial("~/Views/Partials/Navigation.cshtml")
+    @RenderBody()
+    @Html.Partial("~/Views/Partials/Footer.cshtml")
+    <!-- Custom Script File-->
+    <!-- Supportive-JavaScript -->
+    <script type="text/javascript" src="~/assets/js/jquery-2.2.3.min.js"></script>
+
+    <!-- Nav bar -->
+    <script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=w3layouts" id='_fancybar_js'></script>
+    <script type="text/javascript" src="~/assets/js/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/classie.js"></script>
+
+
+    <!-- flexisel -->
+    <script type="text/javascript" src="~/assets/js/jquery.flexisel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Carousel -->
+    <script type="text/javascript" src="~/assets/js/owl.carousel.js"></script>
+
+    <!-- For responsive tab -->
+    <script type="text/javascript" src="~/assets/js/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/easy-responsive-tabs.js"></script>
+    <script type="text/javascript" src="~/assets/js/JiSlider.js"></script>
+
+    <!-- Require Script Link -->
+    <script type="text/javascript" src="~/assets/js/bootstrap-3.1.1.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/main.js"></script>
+    <script type="text/javascript" src="~/assets/js/demo7.js"></script>
+    <script type="text/javascript" src="~/assets/js/lsb.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/SmoothScroll.js"></script>
+</body>
+</html>
+
+

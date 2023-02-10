@@ -1,0 +1,8 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ContactForm>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+}
+<div class="mail" id="contact-us">
+	@{Html.RenderAction("RenderForm", "ContactSurface");}
+</div>

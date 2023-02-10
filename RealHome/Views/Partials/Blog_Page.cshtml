@@ -1,0 +1,61 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = null;
+}
+
+<div class="blog" id="our-latest-news">
+    <div class="container">
+        <div class="tittle-agileinfo">
+            <h3>Our Latest News</h3>
+        </div>
+        <div class="col-md-4 blog-grids">
+            @{var blogls = (ContentModels.Blog_Left)Model.Root().Children().Where(x => x.IsDocumentType("blog_Left")).FirstOrDefault();
+                foreach (ContentModels.Blog_L item in blogls.Children)
+                {
+                    <div class="blog-full-wthree">
+                        <div class="blog-left-agileits">
+                            <p>@item.Monthl</p>
+                            <span>@item.Dayl</span>
+                        </div>
+                        <div class="blog-right-agileits-w3layouts">
+                            <h4>
+                                <a href="/blog/@item.Linkl" data-toggle="-" data-target="#@item.Linkl">@item.BlogNamel</a>
+                            </h4>
+                            <p>
+                                <a href="/blog/@item.Linkl" data-toggle="-" data-target="#@item.Linkl"> @item.Linkl</a>
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-md-4 blog-grids mid-blog-agile" style="background: url('imgrealhome/blog.jpg')!important">
+            <h5>BLOG NEWS</h5>
+        </div>
+        <div class="col-md-4 blog-grids">
+            @{ var blogrs = (ContentModels.Blog_Right)Model.Root().Children().Where(x => x.IsDocumentType("blog_Right")).FirstOrDefault();
+                foreach (ContentModels.Blog_R item2 in blogrs.Children)
+                {
+                    <div class="blog-full-wthree">
+                        <div class="blog-left-agileits">
+                            <p>@item2.Month_R</p>
+                            <span>@item2.Day_R</span>
+                        </div>
+                        <div class="blog-right-agileits-w3layouts">
+                            <h4>
+                                <a href="/blog/@item2.Link_R" data-toggle="-" target="_blank" data-target="#@item2.Link_R">@item2.ContentBlog_R</a>
+                            </h4>
+                            <p>
+                                <a href="/blog/@item2.Link_R" data-toggle="-" target="_blank" data-target="#@item2.Link_R">@item2.Link_R</a>
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                }
+            }
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

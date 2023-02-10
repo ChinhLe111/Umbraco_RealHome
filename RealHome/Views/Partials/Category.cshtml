@@ -1,0 +1,33 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = null;
+    var homePage = Umbraco.AssignedContentItem.AncestorOrSelf<RealHome>();
+    var children = homePage.Gallery_List;
+}
+<div class="gallery" id="galleries">
+    <div class="tittle-agileinfo">
+        <h3>Properties Of Real Homes</h3>
+    </div>
+    <ul id="flexiselDemo1" style="display: flex">
+        @if (children != null && children.Any())
+        {
+            foreach (var item in children)
+            {
+                <li>
+                    <div class="wthree_gallery_grid">
+                        <a href="@item.Gal_Image.Url" class="lsb-preview" data-lsb-group="header">
+                            <div class="view second-effect">
+                                <img src="@item.Gal_Image.Url" alt="" class="img-responsive" />
+                                <div class="mask">
+                                    <h6>@item.Gal_Title</h6>
+                                    <p>@item.Gal_Des</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>

@@ -1,0 +1,329 @@
+﻿@inherits UmbracoViewPage<Blog>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "Master.cshtml";
+    var blogrs = (ContentModels.Blog_Right)Model.Root().Children().Where(x => x.IsDocumentType("blog_Right")).FirstOrDefault();
+    var idel = (ContentModels.Blog)Model.Root().Children().Where(x => x.IsDocumentType("blog")).FirstOrDefault();
+    var blogls = (ContentModels.Blog_Left)Model.Root().Children().Where(x => x.IsDocumentType("blog_Left")).FirstOrDefault();
+}
+
+<header class="masterhead" style="background-image:url(@Model.ImageBackground.Url)">
+    <div class="overlay-blg"></div>
+    <div class="container banner-news">
+        <div class="row h-100">
+            <div class="col-lg-12 mx-auto title-blog">
+                <div class="site-head">
+                    <h1 class="text-truncate-4">
+                        @Model.Name
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="breadcrumbs">
+    <div class="breadcrumb-item">
+        <a href="/">Home</a>
+        <a href="/blog/">
+            <i class="fa-solid fa-chevron-right"></i>
+            Blog
+        </a>
+    </div>
+</div>
+<div id="blog-content ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                @foreach (ContentModels.Blog_R item2 in blogrs.Children)
+                {
+                    <div class="blog-details">
+                        <div class="blog__header">
+                            <h5 class="blog-headline"><a href="/blog/@item2.Link_R">@item2.H4</a></h5>
+                        </div>
+                        <div class="blog__content">
+                            <div id="abody">
+                                <div class="blog__img" style="display: flex;">
+                                    <img src="@item2.Image.Url" />
+                                    </div>
+                                    <div class="blog__quote">
+                                        <p>
+                                            <i>
+                                                Chairman of the National Assembly Vương Đình Huệ (right) had talks with Chairman
+                                                of the European Parliament’s Committee on International Trade (INTA) Bernd Lange on
+                                                Thursday in Hà Nội. — VNA/VNS Photo Doãn Tấnk
+                                            </i>
+                                        </p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @foreach (ContentModels.Blog_L item in blogls.Children)
+                {
+                    <div class="blog-details">
+                        <div class="blog__header">
+                            <h5 class="blog-headline"><a href="/blog/@item.Linkl">@item.Nameh4l</a></h5>
+                        </div>
+                        <div class="blog__content">
+                            <div id="abody">
+                                <div class="blog__img" style="display: flex;">
+                                    <img src="@item.Imageleft.Url" />
+                                    </div>
+                                    <div class="blog__quote">
+                                        <p>
+                                            <i>
+                                                Chairman of the National Assembly Vương Đình Huệ (right) had talks with Chairman
+                                                of the European Parliament’s Committee on International Trade (INTA) Bernd Lange on
+                                                Thursday in Hà Nội. — VNA/VNS Photo Doãn Tấn
+                                            </i>
+                                        </p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3">
+                <div class="blog-list">
+                    <div class="blog__sidebar">
+                        <div class="blog__latest">
+                            <ul>
+                                <li>XEM NHIỀU HƠN</li>
+                            </ul>
+                        </div>
+                        <div class="blog__tabs">
+
+                            @foreach (ContentModels.BlogItem item in idel.Children)
+                            {
+                                <article class="blog__story">
+                                    <a href="#" class="story__thumb"><img src="@item.Image.Url" alt="" /></a>
+                                    <h3><a href="#" class="story__title">@item.H4</a></h3>
+                                    <div class="story__description">
+                                        <ul>
+                                            <li>
+                                                @item.Content_blogitem
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            }
+                        </div>
+                        <div class="blog__latest">
+                            <ul>
+                                <li>TIN TỨC</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mail" id="contact-us">
+    @{Html.RenderAction("RenderForm", "ContactSurface");}
+</div>
+
+<style>
+    <!-- CSS -->
+    .counter:after {
+        content: '+';
+        font-size: 42px;
+        color: #fff;
+    }
+
+    .counter {
+        top: 0px;
+        margin-left: 60px;
+        color: #fff;
+        font-size: 42px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        position: absolute;
+    }
+
+    /*--Blog header--*/
+
+    .masterhead {
+        padding: 0;
+        padding-top: 25%;
+        background: no-repeat center center;
+        background-attachment: scroll;
+        position: relative;
+        background-size: cover;
+        background-image: url(/imgrealhome/sergio-sala-VbB6HYunm04-unsplash.jpg);
+    }
+
+        .masterhead .overlay-blg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #1a1818;
+            opacity: 0.5;
+        }
+
+    .banner-news {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .h-100 {
+        height: 100% !important;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .title-blog {
+        align-self: center;
+    }
+
+    .site-head {
+        text-align: center;
+        color: #fff;
+    }
+
+    /*--End blog Header--*/
+    /*--Blog content--*/
+
+    .breadcrumbs * {
+        font-size: 0.8rem;
+        line-height: 3rem;
+    }
+
+    .breadcrumbs {
+        height: 50px;
+        align-items: center;
+        padding: 0 20px;
+        margin: 20px 0;
+        background: #f7f7f7;
+        border-radius: 5px;
+    }
+
+    .breadcrumb-item {
+        text-transform: uppercase;
+        display: flex;
+        margin: auto;
+    }
+
+        .breadcrumb-item a {
+            text-decoration: none;
+            color: #000;
+        }
+
+    .fa-chevron-right {
+        margin: 0 1rem;
+    }
+
+    .blog-headline {
+        font-family: PlayfairDisplay,serif;
+        font-size: 2rem;
+        line-height: 3rem;
+        margin-bottom: 15px;
+        cursor:pointer;
+    }
+
+    .sapo {
+        font-weight: 600;
+        line-height: 2rem;
+    }
+
+    .blog__content {
+        display: flex;
+    }
+
+    #abody .blog__quote {
+        margin-top: 1em;
+        margin-bottom:2em;
+    }
+
+        #abody .blog__quote p i {
+            display: block;
+            color: #606f70;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+    #abody .blog__description {
+        margin: 1rem auto;
+    }
+
+        #abody .blog__description p {
+            margin-bottom: 1.5rem;
+            font-family: 'Times', sans-serif;
+            font-size: 17px;
+            line-height: 30px;
+            text-align: justify;
+        }
+
+    /*--Blog Sidebar--*/
+    .blog__sidebar {
+        margin-top: 20px;
+    }
+
+    .blog__latest {
+        margin-bottom: 2rem;
+    }
+
+        .blog__latest ul {
+            background: #0066b3;
+            height: 4rem;
+            align-items: center;
+            display: flex;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+        }
+
+            .blog__latest ul li {
+                display: flex;
+                color: #fff;
+                background: 0 0;
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                font-weight: 600;
+                padding: 0 22px;
+            }
+
+    .blog__story {
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 0.5rem;
+    }
+
+        .blog__story h3 {
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+            .blog__story h3 a {
+                color: #5d875c;
+            }
+
+    .blog__img img{
+        width:100%;
+    }
+
+    .blog__tabs .blog__story a img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .story__description {
+        margin: 1rem;
+    }
+
+        .story__description ul {
+            text-align: justify;
+        }
+
+            .story__description ul li {
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+</style>

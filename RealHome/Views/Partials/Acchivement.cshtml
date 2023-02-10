@@ -1,0 +1,24 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = null;
+    var homePage = Umbraco.AssignedContentItem.AncestorOrSelf<RealHome>();
+    var children = homePage.Acchivements_List;
+}
+<div class="banner-btm-w3ls">
+    <div class="container">
+        @if (children != null && children.Any())
+        {
+            foreach (var item in children)
+            {
+                <div class="col-md-3 banner-btm-agileits">
+                    <p>
+                        <i class="@item.Acc_Icon" aria-hidden="true"></i><div class="counter" data-target="@item.Acc_Quantity"></div>
+                    </p>
+                    <h3>@item.Acc_Name</h3>
+                </div>
+            }
+        }
+        <div class="clearfix"></div>
+    </div>
+</div>

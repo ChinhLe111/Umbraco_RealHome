@@ -1,0 +1,45 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = null;
+    var homePage = Umbraco.AssignedContentItem.AncestorOrSelf<RealHome>();
+    var children = homePage.Employee_List;
+}
+<div id="meet-our-team" class="team">  
+    <div class="tittle-agileinfo">
+        <h3 class="white-w3ls">Meet Our Team</h3>
+    </div>
+    <div class="sreen-gallery-cursual">
+        <div id="owl-demo" class="owl-carousel">
+            @if (children != null && children.Any())
+            {
+                foreach (var item in children)
+                {
+                    <div class="item-owl">
+                        <div class="test-review">
+                            <img src="@item.EmployeePhoto.Url" class="img-responsive" alt="s1.jpg" />
+                            <h5>@item.EmployeeName</h5>
+                            <span>@item.EmployeeRole</span>
+                            <p>@item.EmployeeBio</p>
+                            <div class="w3_agileits_social_media">
+                                <ul>
+                                    <li>
+                                        <a href="@item.LinkFB" target="_blank" class="wthree_facebook">
+                                            <i class="fa-brands fa-square-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@item.LinkTw" target="_blank" class="wthree_twitter">
+                                            <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+</div>

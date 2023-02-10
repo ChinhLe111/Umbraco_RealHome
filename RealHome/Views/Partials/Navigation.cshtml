@@ -1,0 +1,25 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    var navs = Model.Root().Children().Where(x => x.IsDocumentType("navigations")).FirstOrDefault();
+
+}
+<div class="banner-w3ls" id="english">
+    <div class="overlay overlay-contentpush">
+        <button type="button" class="overlay-close">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <nav>
+            <ul>
+                @{
+                    foreach (ContentModels.Navigation item in navs.Children)
+                    {
+                        <li>
+                            <a href="@item.LinkNav" class="scroll">@item.NavName</a>
+                        </li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

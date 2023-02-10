@@ -1,0 +1,56 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = null;
+}
+
+<div id="who-we-are" class="about">
+    @{var tabs = (ContentModels.Tabs)Model.Root().Children().Where(x => x.IsDocumentType("tabs")).FirstOrDefault(); }
+    <div class="tittle-agileinfo">
+        <h3>@tabs.TabsName</h3>
+        <p class="spl-para">
+            @tabs.TabsTitle
+        </p>
+    </div>
+    <div class="agile_banner_bottom_grids">
+        <div id="verticalTab" class="resp-vtabs" style="display: block; width: 100%; margin: 0;">
+            <ul class="resp-tabs-list" role="tablist">
+                @{
+                    foreach (ContentModels.Tab tab in tabs.Children())
+                    {
+                        <li class="resp-tab-item @tab.Class1" role="tab">@tab.TabName</li>
+                    }
+                }
+            </ul>
+            <div class="resp-tabs-container">
+                @{
+                    foreach (ContentModels.Tab tab in tabs.Children())
+                    {
+                        <div class="w3layouts_vertical_tab resp-tab-content @tab.Class2">
+                            <h6>@tab.TabTitle</h6>
+                            <div class="banner-slider">
+                                <div class="callbacks_container">
+                                    <ul class="rslides" id="slider4">
+                                        @foreach (ContentModels.ChildrenOfTab child in tab.Children())
+                                        {
+                                            <li>
+                                                <div class="banner-info">
+                                                    <div class="banner-right-agileits">
+                                                        <h3>@child.ChildrenName</h3>
+                                                        <p>@child.Description</p>
+                                                        <p><i>@child.Italic</i></p>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{ 
+    var homePage = Umbraco.AssignedContentItem.AncestorOrSelf<RealHome>();
+    var children = homePage.Contact_List;
+}
+
+<div class="w3l_footer">
+    @{
+        var footers = (ContentModels.Footers)Model.Root().Children().Where(x => x.IsDocumentType("footers")).FirstOrDefault();
+    }
+    <div class="contact-w3-agileits">
+        <div class="container">
+            <div class="tittle-agileinfo">
+                <h3 class="white-w3ls">@footers.NameContact</h3>
+            </div>
+            <div class="logo-agile">
+                <a href="">
+                    <img src="@footers.Logo.Url" alt="logo1.png" class="img-responsive">
+                </a>
+            </div>
+            <div class="footer-middle-agileinfo">
+                <div class="footer-button text-center">
+                    <h2>
+                        <i class="fa fa-quote-left" aria-hidden="true"></i>@footers.TextContent<i class="fa fa-quote-right" aria-hidden="true"></i>
+                    </h2>
+                    <p class="para-agileits-w3layouts">@footers.Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3ls_footer_grid">
+        @if (children != null && children.Any())
+        {
+            foreach (var item in children)
+            {
+                <div class="col-md-3 w3ls_footer_grid_left fg1">
+                    <p>@item.Con_Name</p>
+                    <i class="@item.Con_Icon" aria-hidden="true"></i>
+                    <h4>@item.Con_Title</h4>
+                </div>
+            }
+        }
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="map">
+    <ul class="faq">
+        <li class="item1">
+            <a id="guld" href="#">
+                Route Map&emsp; <span class="fa fa-angle-up"></span>
+            </a>
+            <ul>
+                <li class="subitem1">
+                    <iframe src="https://maps.google.co.uk/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=15+Springfield+Way,+Hythe,+CT21+5SH&amp;aq=t&amp;sll=52.8382,-2.327815&amp;sspn=8.047465,13.666992&amp;ie=UTF8&amp;hq=&amp;hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&amp;t=m&amp;z=14&amp;ll=51.077429,1.121722&amp;output=embed"></iframe>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="footer-w3layouts">
+    <div class="w3_agileits_social_media">
+        <ul>
+            <li>
+                <a href="https://www.facebook.com/" class="wthree_facebook" target="_blank">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/tweeter" class="wthree_facebook" target="_blank">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="botttom-nav-agileits">
+        <ul>
+            <li>
+                <a href="#english" class="scroll">Home</a>
+            </li>
+            <li>
+                <a href="#who-we-are" class="scroll">Who We Are</a>
+            </li>
+            <li>
+                <a href="#our-latest-news" class="scroll">Our Latest News</a>
+            </li>
+            <li>
+                <a href="#contact-us" class="scroll">Mail Us</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="agile-copy">
+            <p>@footers.Footer</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<a href="#" class="scroll-top" id="toTop"> <span id="toTopHover"> </span></a>
+<div id="bubble-alert" data-message-default="Error occured. Please try again latter"></div>

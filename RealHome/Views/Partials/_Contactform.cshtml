@@ -1,0 +1,32 @@
+﻿@inherits UmbracoViewPage<ContactViewModel>
+@using RealHome.ViewModels;
+
+<div class="container">
+    <div class="tittle-agileinfo">
+        <h3>Contact Us</h3>
+    </div>
+    <div id="bubble-alert"></div>
+    <div class="w3agile_mail_grids">
+        <div class="w3agile_mail_grid">
+            @using (Html.BeginUmbracoForm("SubmitForm", "ContactSurface", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+    <div class="col-md-6 col-sm-6 col-xs-12 mail-grid-name field-validation-error text-danger">
+        @Html.TextBoxFor(m => m.Name, new { @id = "username", placeholder = "Name" })
+        @Html.ValidationMessage("Name", "", "text-danger")
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 mail-grid-mail field-validation-error text-danger">
+        @Html.TextBoxFor(m => m.Email, new { @id = "email", placeholder = "Email"})
+        @Html.ValidationMessage("Email", "", "text-danger")
+    </div>
+    <div class="col-xs-12 mail_grid_msg field-validation-error text-danger">
+         @Html.TextAreaFor(m => m.Message, new { @id = "message", placeholder = "Message" })
+          @Html.ValidationMessage("Message", "", "text-danger")
+      </div>
+<div class="con-form text-center">
+    <input type="submit" value="Send">
+</div>
+}
+        </div>
+    </div>
+</div>
